@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment/presantion/view/check_out_screen.dart';
+import 'package:payment/presantion/view/screens/check_out_screen.dart';
 
 void main() {
   runApp(const CheckOut());

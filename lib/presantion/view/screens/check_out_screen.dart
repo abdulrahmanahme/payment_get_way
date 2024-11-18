@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:payment/core/app_colors.dart';
 import 'package:payment/core/assets_path.dart';
-import 'package:payment/core/font_style.dart';
 import 'package:payment/core/widget.dart';
 import 'package:payment/core/widget/custom_button.dart';
-import 'package:payment/presantion/view/payment_details_screen.dart';
 import 'package:payment/presantion/view/widgets/item_order.dart';
+import 'package:payment/presantion/view/widgets/payment_model_bottom_sheet.dart';
 import 'package:payment/presantion/view/widgets/total_price.dart';
 
 class CheckOutScreen extends StatelessWidget {
@@ -63,10 +62,13 @@ class CheckOutScreen extends StatelessWidget {
             ),
             CustomBottom(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PaymentDetailsScreen(),),);
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) => const PaymentModelBottomSheet());
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => const PaymentDetailsScreen(),),);
               },
             ),
             const SizedBox(
@@ -78,5 +80,4 @@ class CheckOutScreen extends StatelessWidget {
     );
   }
 }
-
 

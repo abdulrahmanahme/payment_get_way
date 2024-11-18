@@ -8,15 +8,17 @@ class ItemOrder extends StatelessWidget {
     super.key,
     required this.value,
     required this.price,
+    this.priceStyle
   });
   final String value, price;
+ final TextStyle? priceStyle;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Text(value, style: FontStyles.font18W400),
         const Spacer(),
-        Text(price, style: FontStyles.font18W400),
+        Text(price, style:priceStyle?? FontStyles.font18W400),
       ],
     );
   }
