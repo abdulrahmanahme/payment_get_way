@@ -5,6 +5,7 @@ import 'package:payment/presantion/view/widgets/bardcode_widget.dart';
 import 'package:payment/presantion/view/widgets/card_Info.dart';
 import 'package:payment/presantion/view/widgets/item_order.dart';
 import 'package:payment/presantion/view/widgets/total_price.dart';
+
 class ThankYouPaymentCard extends StatelessWidget {
   const ThankYouPaymentCard({
     super.key,
@@ -22,8 +23,7 @@ class ThankYouPaymentCard extends StatelessWidget {
         color: AppColors.greyColor,
       ),
       child: Padding(
-        padding: const EdgeInsets.only(
-            top: 47 + 16, left: 15, right: 15),
+        padding: const EdgeInsets.only(top: 47 + 16, left: 15, right: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -76,7 +76,7 @@ class ThankYouPaymentCard extends StatelessWidget {
             const Spacer(),
             const BarcodeWidget(),
             SizedBox(
-              height:( MediaQuery.sizeOf(context).height *  .06),
+              height: (MediaQuery.sizeOf(context).height * .06),
             )
           ],
         ),
@@ -84,4 +84,3 @@ class ThankYouPaymentCard extends StatelessWidget {
     );
   }
 }
-

@@ -1,10 +1,8 @@
-
-
 import 'package:flutter/widgets.dart';
 // import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 class CreditCardItem extends StatefulWidget {
- const CreditCardItem();
+  const CreditCardItem();
 
   @override
   State<CreditCardItem> createState() => _CreditCardItemState();

@@ -1,3 +1,3 @@
 class AssetsPath {
-  static const image ='assets/images/';
+  static const image = 'assets/images/';
 }

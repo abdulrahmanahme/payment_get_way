@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/widgets.dart';
 import 'package:payment/presantion/view/widgets/payment_method_card.dart';
 
