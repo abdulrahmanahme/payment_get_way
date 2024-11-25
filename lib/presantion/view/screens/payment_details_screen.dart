@@ -11,7 +11,7 @@ class PaymentDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWidget(title: 'Payment Details',context: context),
+      appBar: appBarWidget(title: 'Payment Details', context: context),
       body: const SingleChildScrollView(
         child: Column(
           children: [

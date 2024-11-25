@@ -12,15 +12,15 @@ class ApiService {
   Future<Response> post(
     String path,
     Object? body,
-    String token,
-   { Map<String, dynamic>? headers,}
-  ) async {
+    String token, {
+    Map<String, dynamic>? headers,
+  }) async {
     return await dio.post(
       path,
       data: body,
       options: Options(
         contentType: 'application/x-www-form-urlencoded',
-        headers: headers?? {'Authorization': 'Bearer $token'},
+        headers: headers ?? {'Authorization': 'Bearer $token'},
       ),
     );
   }

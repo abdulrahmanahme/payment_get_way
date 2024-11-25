@@ -3,10 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:payment/core/assets_path.dart';
 import 'package:payment/core/font_style.dart';
 
-AppBar appBarWidget({
-  required String title,
-  required context
-}) {
+AppBar appBarWidget({required String title, required context}) {
   return AppBar(
     leading: Center(
       child: InkWell(
