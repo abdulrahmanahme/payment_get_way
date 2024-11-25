@@ -15,6 +15,7 @@ migrate_working_dir/
 *.ipr
 *.iws
 .idea/
+
 lib/core/utils/api_key.dart
 lib/core/utils/end_points.dart
 
