@@ -1,5 +1,5 @@
 class PaymentModelInput {
-  final int amount;
+  final String amount;
   final String currency;
   PaymentModelInput({required this.amount, required this.currency});
 
@@ -9,6 +9,4 @@ class PaymentModelInput {
       'currency': currency,
     };
   }
-
-  
 }

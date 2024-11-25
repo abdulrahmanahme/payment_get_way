@@ -9,8 +9,11 @@ class ApiService {
   }
 
   /// Post request
-  Future<Response> post(String path,
-       Object? body,  String token,) async {
+  Future<Response> post(
+    String path,
+    Object? body,
+    String token,
+  ) async {
     return await dio.post(
       path,
       data: body,

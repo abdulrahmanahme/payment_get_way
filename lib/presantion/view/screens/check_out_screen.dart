@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment/core/app_colors.dart';
 import 'package:payment/core/assets_path.dart';
 import 'package:payment/core/widget.dart';
 import 'package:payment/core/widget/custom_button.dart';
+import 'package:payment/model/repo/payment_checkout_repo_impl.dart';
+import 'package:payment/presantion/manager/cubit/paymnent_cubit.dart';
 import 'package:payment/presantion/view/widgets/item_order.dart';
 import 'package:payment/presantion/view/widgets/payment_model_bottom_sheet.dart';
 import 'package:payment/presantion/view/widgets/total_price.dart';
@@ -63,12 +66,14 @@ class CheckOutScreen extends StatelessWidget {
             CustomBottom(
               onTap: () {
                 showModalBottomSheet(
-                    context: context,
-                    builder: (context) => const PaymentModelBottomSheet());
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => const PaymentDetailsScreen(),),);
+                  context: context,
+                  builder: (context) => BlocProvider(
+                    create: (context) => PaymentCubit(
+                      paymentCheckoutRepo: PaymentCheckoutRepoImpl(),
+                    ),
+                    child: const PaymentModelBottomSheet(),
+                  ),
+                );
               },
             ),
             const SizedBox(

@@ -6,8 +6,8 @@ gradle-wrapper.jar
 /local.properties
 GeneratedPluginRegistrant.java
 
-lib\core\utils\api_key.dart
-lib\core\utils\end_points.dart
+lib/core/utils/api_key.dart
+lib/core/utils/end_points.dart
 
 
 # Remember to never publicly share your keystore.
