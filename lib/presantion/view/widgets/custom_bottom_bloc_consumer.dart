@@ -17,8 +17,9 @@ import 'package:payment/presantion/manager/cubit/paymnent_cubit.dart';
 import 'package:payment/presantion/view/screens/thank_you_body_screen.dart';
 
 class CustomBottomBlocConsumer extends StatelessWidget {
-  const CustomBottomBlocConsumer({super.key});
-
+  const CustomBottomBlocConsumer(
+      {super.key, required this.currentItemSelected});
+  final int currentItemSelected;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PaymentCubit, PaymentStates>(
@@ -45,55 +46,63 @@ class CustomBottomBlocConsumer extends StatelessWidget {
             isLoading: state is LoadingPaymentState ? true : false,
             title: 'Pay',
             onTap: () {
-              // PaymentModelInput paymentModelInputModel = PaymentModelInput(
-              //     amount: '100',
-              //     currency: 'USD',
-              //     customerId: ApiKey.customerId);
-              // BlocProvider.of<PaymentCubit>(context)
-              //     .makePayment(paymentModelInputModel);
-
-              /////
-              var amountModel = AmountModel(
-                  total: '100',
-                  details: Details(
-                      shipping: '0', shippingDiscount: 0, subtotal: '100'),
-                  currency: 'usd');
-
-              var orderList = [
-                Order(name: 'Phone', quantity: 1, price: '50', currency: 'use'),
-                Order(name: 'Apple', quantity: 1, price: '50', currency: 'use'),
-              ];
-
-              var listOrdersModel = ListOrdersModel(orders: orderList);
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => PaypalCheckoutView(
-                  sandboxMode: true,
-                  clientId: "YOUR CLIENT ID",
-                  secretKey: "YOUR SECRET KEY",
-                  transactions: [
-                    {
-                      "amount": amountModel.toJson(),
-                      "description": "The payment transaction description.",
-                      "item_list": listOrdersModel.toJson(),
-                    }
-                  ],
-                  note: "Contact us for any questions on your order.",
-                  onSuccess: (Map params) async {
-                    log("onSuccess: $params");
-                    Navigator.pop(context);
-                  },
-                  onError: (error) {
-                    log("onError: $error");
-                    Navigator.pop(context);
-                  },
-                  onCancel: () {
-                    print('cancelled:');
-                    Navigator.pop(context);
-                  },
-                ),
-              ));
+              if (currentItemSelected == 0) {
+                PaymentModelInput paymentModelInputModel = PaymentModelInput(
+                    amount: '100',
+                    currency: 'USD',
+                    customerId: ApiKey.customerId);
+                BlocProvider.of<PaymentCubit>(context)
+                    .makePayment(paymentModelInputModel);
+              } else if (currentItemSelected == 1) {
+                var transitionData = getTransitionData();
+                PayWithPaypal(context, transitionData);
+              }
             });
       },
     );
+  }
+
+  void PayWithPaypal(BuildContext context,
+      ({AmountModel amount, ListOrdersModel listOrdersModel}) transitionData) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (BuildContext context) => PaypalCheckoutView(
+        sandboxMode: true,
+        clientId: ApiKey.clientId,
+        secretKey: ApiKey.clientSecret,
+        transactions: [
+          {
+            "amount": transitionData.amount.toJson(),
+            "description": "The payment transaction description.",
+            "item_list": transitionData.listOrdersModel.toJson(),
+          }
+        ],
+        note: "Contact us for any questions on your order.",
+        onSuccess: (Map params) async {
+          log("onSuccess: $params");
+          Navigator.pop(context);
+        },
+        onError: (error) {
+          log("onError: $error");
+          Navigator.pop(context);
+        },
+        onCancel: () {
+          print('cancelled:');
+          Navigator.pop(context);
+        },
+      ),
+    ));
+  }
+
+  ({AmountModel amount, ListOrdersModel listOrdersModel}) getTransitionData() {
+    var amountModel = AmountModel(
+        total: '100',
+        details: Details(shipping: '0', shippingDiscount: 0, subtotal: '100'),
+        currency: 'USD');
+    var orderList = [
+      Order(name: 'Phone', quantity: 1, price: '50', currency: 'USD'),
+      Order(name: 'Apple', quantity: 1, price: '50', currency: 'USD'),
+    ];
+    var listOrdersModel = ListOrdersModel(orders: orderList);
+    return (amount: amountModel, listOrdersModel: listOrdersModel);
   }
 }

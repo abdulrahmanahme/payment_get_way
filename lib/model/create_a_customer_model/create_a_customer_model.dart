@@ -1,29 +1,12 @@
-import 'invoice_settings.dart';
-import 'metadata.dart';
+
 
 class CreateACustomerModel {
   String? id;
   String? object;
   dynamic address;
   int? balance;
-  // int? created;
-  // dynamic currency;
-  // dynamic defaultSource;
-  // bool? delinquent;
-  // dynamic description;
-  // dynamic discount;
-  // dynamic email;
-  // String? invoicePrefix;
-  // InvoiceSettings? invoiceSettings;
-  // bool? livemode;
-  // // Metadata? metadata;
   String? name;
-  // int? nextInvoiceSequence;
   dynamic phone;
-  // // List<dynamic>? preferredLocales;
-  // dynamic shipping;
-  // String? taxExempt;
-  // dynamic testClock;
 
   CreateACustomerModel({
     this.id,
