@@ -16,8 +16,7 @@ migrate_working_dir/
 *.iws
 .idea/
 
-lib/core/utils/api_key.dart
-lib/core/utils/end_points.dart
+
 
 
 # The .vscode folder contains launch configuration and tasks you configure in
@@ -49,3 +48,7 @@ app.*.map.json
 # "JSON to Dart Model" generator tracker files locations.
 /.json_models/
 models.jsonc
+
+
+/lib/core/utils/api_key.dart
+/lib/core/utils/end_points.dart
