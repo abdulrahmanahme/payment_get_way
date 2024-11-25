@@ -9,7 +9,7 @@ class ThankYouBodyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWidget(title: ''),
+      appBar: appBarWidget(title: '', context: context),
       body: Transform.translate(
         offset: const Offset(0, -8),
         child: Padding(

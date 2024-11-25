@@ -41,7 +41,6 @@ class CreateACustomerModel {
       address: json['address'] as dynamic,
       balance: json['balance'] as int?,
       name: json['name'] as String?,
-     
     );
   }
 
@@ -50,8 +49,6 @@ class CreateACustomerModel {
         'object': object,
         'address': address,
         'balance': balance,
-      
         'name': name,
-       
       };
 }

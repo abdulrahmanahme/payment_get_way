@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment/core/font_style.dart';
+import 'package:payment/core/utils/api_key.dart';
 import 'package:payment/core/widget/custom_button.dart';
 import 'package:payment/model/payment/input_models/payment_model_input.dart';
 import 'package:payment/presantion/manager/cubit/payment_states.dart';
@@ -39,8 +40,10 @@ class CustomBottomBlocConsumer extends StatelessWidget {
             isLoading: state is LoadingPaymentState ? true : false,
             title: 'Pay',
             onTap: () {
-              PaymentModelInput paymentModelInputModel =
-                  PaymentModelInput(amount: '100', currency: 'USD');
+              PaymentModelInput paymentModelInputModel = PaymentModelInput(
+                  amount: '100',
+                  currency: 'USD',
+                  customerId: ApiKey.customerId);
               BlocProvider.of<PaymentCubit>(context)
                   .makePayment(paymentModelInputModel);
             });

@@ -5,12 +5,13 @@ import 'package:payment/core/font_style.dart';
 
 AppBar appBarWidget({
   required String title,
+  required context
 }) {
   return AppBar(
     leading: Center(
       child: InkWell(
           onTap: () {
-            // Navigator.pop(context);
+            Navigator.pop(context);
           },
           child: SvgPicture.asset(AssetsPath.image + 'arrow.svg')),
     ),
